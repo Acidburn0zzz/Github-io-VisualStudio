@@ -1,11 +1,15 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using GitHub.Helpers;
 
 namespace GitHub.Collections
 {
-    public interface ITrackingCollection<T> : IDisposable, IList<T>  where T : ICopyable<T>
+    public interface ITrackingCollection<T> : IDisposable, 
+        // ObservableCollection<T> interfaces
+        IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, IList, ICollection, IReadOnlyList<T>, IReadOnlyCollection<T>
+        where T : ICopyable<T>
     {
         ITrackingCollection<T> Listen(IObservable<T> obs);
         IDisposable Subscribe();

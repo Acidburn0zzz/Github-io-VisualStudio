@@ -29,6 +29,22 @@ namespace GitHub.SampleData
     }
 
     [ExcludeFromCodeCoverage]
+    public class PullRequestListViewModelDesigner : BaseViewModelDesigner, IPullRequestListViewModel
+    {
+        public PullRequestListViewModelDesigner()
+        {
+            var prs = new ObservableCollection<IPullRequestModel>();
+            prs.Add(new PullRequestModel(399, "Let's try doing this differently", new AccountDesigner { Login = "shana", IsUser = true }, DateTimeOffset.Now - TimeSpan.FromDays(1)));
+            prs.Add(new PullRequestModel(389, "Build system upgrade", new AccountDesigner { Login = "haacked", IsUser = true }, DateTimeOffset.Now - TimeSpan.FromMinutes(2)) { CommentCount = 4, HasNewComments = false });
+            prs.Add(new PullRequestModel(409, "Fix publish button style", new AccountDesigner { Login = "shana", IsUser = false }, DateTimeOffset.Now - TimeSpan.FromHours(5)) { CommentCount = 27, HasNewComments = true });
+            PullRequests = prs;
+        }
+
+        public IReadOnlyCollection<IPullRequestModel> PullRequests { get; set; }
+        public IPullRequestModel SelectedPullRequest { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
     public class RepositoryCreationViewModelDesigner : BaseViewModelDesigner, IRepositoryCreationViewModel
     {
         public RepositoryCreationViewModelDesigner()
