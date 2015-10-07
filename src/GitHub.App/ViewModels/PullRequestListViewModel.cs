@@ -17,7 +17,7 @@ using System.ComponentModel;
 
 namespace GitHub.ViewModels
 {
-    [ExportViewModel(ViewType = UIViewType.PullRequestList)]
+    [ExportViewModel(ViewType = UIViewType.PRList)]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class PullRequestListViewModel : BaseViewModel, IPullRequestListViewModel
     {
